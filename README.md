@@ -1,5 +1,37 @@
 # Node DB2 Project Starter Code
 
+## Migrations Knex Command
+npx knex migrate:make fruits-schema
+
+# Migrate/restore a new Database Version command
+Use this after a new schema change has been made with migrate:mkae schema to refesh it
+
+npx knex migrate:latest
+
+
+# Rollback
+npx knex migrate:rollback
+To use do 
+    [1] npx knex migrate:rollback
+    [2] npx knex migrate:latest
+This will give you a fresh database allowing you to purge the db
+
+    [1] - If you have problems with rollback: 
+            Delete the database .db3 and then do
+            1] - npx knex migrate:latest
+            2] - npx knex migrate:rollback
+            3] - npx knex migrate:latest
+
+
+For each time you use rollback the last schema change is taken away. You can keep rolling back to start but one migrate:latest will bring you back to the current updated version
+
+
+# Seed
+npx knex seed:make 01-fruits
+npx knex seed:run
+This creates the new database with columns from each seperate migrations action command
+This will ensure each new migration with the latest fresh database will have this data within it. It is good for production. Seed is the data for the database and migration is the schema to program the database. This makes version writing and vaildating much easier. 
+
 ## Introduction
 
 In this challenge, you will write an API that can be used to manage _Cars_ stored in a Relational Database.
