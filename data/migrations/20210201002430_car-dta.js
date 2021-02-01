@@ -3,7 +3,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('cardta', c=>{
     c.increments();
     c.string('name',16);
-    c.string('car-bought',16);
+    c.string('carname',16);
   })
 };
 
